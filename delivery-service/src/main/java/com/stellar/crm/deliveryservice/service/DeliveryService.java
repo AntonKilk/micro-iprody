@@ -3,6 +3,7 @@ package com.stellar.crm.deliveryservice.service;
 import com.stellar.crm.deliveryservice.model.Delivery;
 import com.stellar.crm.deliveryservice.repository.DeliveryRepository;
 import lombok.RequiredArgsConstructor;
+import org.hibernate.service.spi.ServiceException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -36,7 +37,9 @@ public class DeliveryService {
     }
 
     public boolean delete(Long id) {
-        if (!deliveryRepository.existsById(id)) return false;
+        if (!deliveryRepository.existsById(id)) {
+            throw new ServiceException("Delivery Not Found");
+        }
         deliveryRepository.deleteById(id);
         return true;
     }
