@@ -1,5 +1,6 @@
 package com.orderservice.controller;
 
+import com.orderservice.controller.docs.OrderControllerDocs;
 import com.orderservice.model.Order;
 import com.orderservice.service.OrderService;
 import lombok.RequiredArgsConstructor;
@@ -11,7 +12,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/orders")
 @RequiredArgsConstructor
-public class OrderController {
+public class OrderController implements OrderControllerDocs {
 
     private final OrderService orderService;
 
