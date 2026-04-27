@@ -18,10 +18,11 @@ import java.util.Optional;
 public class PaymentClient {
     private final PaymentServiceClient paymentServiceClient;
     private final JsonMapper mapper;
+    private static final String IDEMPOTENCY_KEY = "X-Idempotency-Key";
 
     public PaymentResponse createPaymentRequest(PaymentRequest req) {
         try {
-            return paymentServiceClient.createPaymentRequest(req);
+            return paymentServiceClient.createPaymentRequest(IDEMPOTENCY_KEY, req);
         } catch (FeignException ex) {
             return processException(ex);
         }
