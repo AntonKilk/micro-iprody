@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 public interface PaymentServiceClient {
     @PostMapping("/payments")
     @CircuitBreaker(name = "paymentClientCircuitBreaker")
-    @Retry(name = "orderServiceRetry")
+    @Retry(name = "paymentClientRetry")
     @RateLimiter(name = "paymentClientRateLimiter")
     @Bulkhead(name = "paymentClientBulkhead")
     PaymentResponse createPaymentRequest(@RequestHeader("X-Idempotency-Key") String idempotencyKey,

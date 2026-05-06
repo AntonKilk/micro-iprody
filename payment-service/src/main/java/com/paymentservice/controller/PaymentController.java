@@ -12,8 +12,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/payments")
-@RateLimiter(name = "paymentServerRateLimiter")
 @CircuitBreaker(name = "paymentServiceCircuitBreaker")
+@RateLimiter(name = "paymentServerRateLimiter")
 @RequiredArgsConstructor
 public class PaymentController {
 
