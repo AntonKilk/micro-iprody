@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/orders")
-@CircuitBreaker(name = "orderServiceCircuitBreaker")
+@CircuitBreaker(name = "orderControllerCircuitBreaker")
 @RequiredArgsConstructor
 public class OrderController implements OrderControllerDocs {
 

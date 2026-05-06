@@ -29,7 +29,7 @@ public class OrderService {
         Order saved = orderRepository.save(order);
         PaymentRequest req = new PaymentRequest(saved.getId(), saved.getCustomerId(), saved.getTotalAmount());
         paymentClient.createPaymentRequest(req);
-        return orderRepository.save(order);
+        return saved;
     }
 
     public Optional<Order> update(Long id, Order updated) {
