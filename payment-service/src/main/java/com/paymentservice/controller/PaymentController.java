@@ -3,6 +3,7 @@ package com.paymentservice.controller;
 import com.paymentservice.model.Payment;
 import com.paymentservice.service.PaymentService;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+import io.github.resilience4j.ratelimiter.annotation.RateLimiter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +13,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/payments")
 @CircuitBreaker(name = "paymentServiceCircuitBreaker")
+@RateLimiter(name = "paymentServerRateLimiter")
 @RequiredArgsConstructor
 public class PaymentController {
 
