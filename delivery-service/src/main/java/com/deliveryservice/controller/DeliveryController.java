@@ -2,6 +2,7 @@ package com.deliveryservice.controller;
 
 import com.deliveryservice.model.Delivery;
 import com.deliveryservice.service.DeliveryService;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/deliveries")
+@CircuitBreaker(name = "deliveryServiceCircuitBreaker")
 @RequiredArgsConstructor
 public class DeliveryController {
 

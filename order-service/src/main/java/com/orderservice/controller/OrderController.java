@@ -3,6 +3,7 @@ package com.orderservice.controller;
 import com.orderservice.controller.docs.OrderControllerDocs;
 import com.orderservice.model.Order;
 import com.orderservice.service.OrderService;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/orders")
+@CircuitBreaker(name = "orderServiceCircuitBreaker")
 @RequiredArgsConstructor
 public class OrderController implements OrderControllerDocs {
 
